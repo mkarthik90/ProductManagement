@@ -1,0 +1,59 @@
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body>
+<h2 align="center">Student Registration Form</h2>
+<hr />
+<table align="center" cellpadding="5" cellspacing="5">
+<form:form commandName="field" method="POST" action="process-form">
+
+<tr>
+<td>Name</td>
+<td><form:input path="name" />
+</tr>
+
+<tr>
+<td>UserId</td>
+<td><form:input path="Userid" />
+</tr>
+
+<tr>
+<td>Password</td>
+<td><form:password path="password" />
+</tr>
+
+<tr>
+<td>Email Id</td>
+<td><form:input path="email" />
+</tr>
+
+<tr>
+<td>Address</td>
+<td><form:textarea path="address" />
+</tr>
+<tr>
+<td>City</td>
+<td><form:select path="city">
+<form:option value="" label="Please Select" />
+<form:options items="${city}" itemValue="name" itemLabel="name" />
+</form:select><br />
+<font color="red"><form:errors path="city" /></font></td>
+</tr>
+
+<tr>
+<td>State</td>
+<td><form:select path="state" items="${state}" /><br />
+<font color="red"><form:errors path="state" /></font></td>
+</tr>
+<tr>
+<td>PhoneNo</td>
+<td><form:input path="phoneNo" />
+</tr>
+<tr>
+<td><input type="submit" name="save" /></td>
+</tr>
+</form:form>
+</table>
+</html>
