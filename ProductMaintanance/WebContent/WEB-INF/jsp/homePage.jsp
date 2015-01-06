@@ -14,7 +14,7 @@
 		<center>
 			<ul style="list-style-type: none">
 				<li><a href="">Employee Management</a></li>
-				<li><a href="">Product Management</a></li>
+				<li><a href="/produtManagement.do">Product Management</a></li>
 				<li><a href="">Event Management</a></li>
 			</ul>
 		</center>
