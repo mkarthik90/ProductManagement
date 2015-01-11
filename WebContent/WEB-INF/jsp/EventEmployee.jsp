@@ -11,7 +11,7 @@
 <title>Assigning Employee for the Event</title>
 </head>
 <body>
-<form:form name="eventemployeeform" action="eventemployee" command="eventCommand" method="POST">
+<form:form name="eventemployeeform" action="eventassign" commandName="eventCommand" method="POST">
 <table><tr><td><h3>Select the event</h3></td><td><form:select path="Eventname">
 <form:option value="0" label="Select" />
 <form:options items="${eventname}" itemValue="eventname" itemLabel="eventname" />
