@@ -8,6 +8,6 @@
 </head>
 <body>
 <a href="registration.do">Register Employee</a>
-<a href="">De-Register Employee</a>
+<a href="deapplication.do">De-Register Employee</a>
 </body>
 </html>

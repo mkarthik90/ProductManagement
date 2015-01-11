@@ -13,9 +13,9 @@
 	<h3>
 		<center>
 			<ul style="list-style-type: none">
-				<li><a href="">Employee Management</a></li>
+				<li><a href="registrationPage.do">Employee Management</a></li>
 				<li><a href="">Product Management</a></li>
-				<li><a href="">Event Management</a></li>
+				<li><a href="eventcreation.do">Event Management</a></li>
 			</ul>
 		</center>
 	</h3>

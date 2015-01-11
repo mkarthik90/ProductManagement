@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.witty.service.IEventcreateService;
@@ -22,13 +23,14 @@ public class Eventcreationcontroller {
 		return new ModelAndView("eventcreation");
 	}
 	
-	@RequestMapping("/create.do")
+	@RequestMapping(value="/create.do" ,method=RequestMethod.POST)
 	public ModelAndView authoriseUser(@ModelAttribute("eventcreateCommand")EventcreateCommand eventcreateCommand){
 		String EventName = eventcreateCommand.getEventname();
 		int nopreq = eventcreateCommand.getNopreq();
 		String ndate=eventcreateCommand.getnDate();
+		String Empid=eventcreateCommand.getEmpid();
 		String viewName = "eventcreation";
-		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq)){
+		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq,Empid)){
 			//eventcreateCommand.setEventStatus(true);
 				viewName= "eventsuccess";
 			

@@ -3,8 +3,12 @@ package com.wity.command;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class EventcreateCommand {
+	private String Empid;
 	private String Eventname;
 	private int nopreq;
+	private String day;
+	private String month;
+	private String year;
 	@DateTimeFormat(pattern="yyyy.MM.dd")
 	private String nDate;
 	private boolean eventStatus = true;
@@ -13,6 +17,30 @@ public class EventcreateCommand {
 	
 	public boolean isEventStatus() {
 		return eventStatus;
+	}
+	public String getEmpid() {
+		return Empid;
+	}
+	public void setEmpid(String empid) {
+		Empid = empid;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
 	}
 	public boolean getEventStatus() {
 		return eventStatus;
@@ -33,6 +61,7 @@ public class EventcreateCommand {
 		this.nopreq = nopreq;
 	}
 	public String getnDate() {
+		nDate=year + "/" + month+"/"+day;
 		return nDate;
 	}
 	public void setnDate(String nDate) {

@@ -29,11 +29,11 @@ fuction submission(){
 <br>
 <tr>
 <td>Employee Id </td>
-<td><form:input path="Empid" name="empid" maxlength="5"  placeholder="empid" /></td>
+<td><form:input path="Empid" name="empid" maxlength="5"   /></td>
 </tr><br><br>
 <tr>
 <td>User Name </td>
-<td><form:input path="userName" name="username" maxlength="20"   placeholder="username"/></td>
+<td><form:input path="userName" name="username" maxlength="20"/></td>
 </tr>
 <br>
 <br><br>
