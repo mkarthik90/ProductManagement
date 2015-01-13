@@ -18,12 +18,12 @@ public class EventService implements IEventService {
 			this.jdbcTemplate = jdbcTemplate;
 		}
 	 @Autowired
-	 @Qualifier("eventManagementDAO")
-	 public IEventManagementDAO eventManagementDAO;
+	 @Qualifier("eventRegistrationDAO")
+	 public IEventManagementDAO eventRegistrationDAO;
 	 
 	 @Override
 	 public void showEvent( String Eventname,String Employee,String Products) {
-	 	eventManagementDAO.showEmployee();
+	 	eventRegistrationDAO.showEmployee();
 	 	
 	 }
 
