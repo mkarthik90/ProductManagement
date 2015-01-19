@@ -15,13 +15,13 @@ public class DeregistrationController  {
 	@Qualifier("deregistrService")
 	public IDeregistrService deregistrService;
 
-	@RequestMapping("/deapplication.do")
-	public ModelAndView getHomePage(@ModelAttribute("deregistrCommand")DeregistrCommand deregistrCommand){
+	@RequestMapping("/deregistration.do")
+	public ModelAndView getderegistrPage(@ModelAttribute("deregistrCommand")DeregistrCommand deregistrCommand){
 		return new ModelAndView("deregistr");
 	}
 	
 	@RequestMapping("/deregistr.do")
-	public ModelAndView authoriseUser(@ModelAttribute("deregistrCommand")DeregistrCommand deregistrCommand){
+	public ModelAndView deregistrprocess(@ModelAttribute("deregistrCommand")DeregistrCommand deregistrCommand){
 		String emp_id = deregistrCommand.getEmpid();
 		String userName = deregistrCommand.getuserName();
 		String viewName = "deregistr";

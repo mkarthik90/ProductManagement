@@ -12,7 +12,7 @@ public class LoginDAO implements ILoginDAO {
 	public int getLoginDetails(String userName,String password){
 		
 		DataSource dataSource = DataFactory.getDataSource();
-		String sql = "SELECT COUNT(*) from emp.entry where userName=? AND password=?";
+		String sql = "SELECT COUNT(*) from dbo.logintable where userName=? AND password=?";
 		JdbcTemplate template = new JdbcTemplate(dataSource);
 		int count = template.queryForInt(sql, new Object[]{userName,password});
 		return count;

@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Event Management</title>
 </head>
 <body>
-<a href="registration.do">Register Employee</a>
-<a href="deregistration.do">De-Register Employee</a>
+<ul>
+<li><a href="eventcreation.do">Create Event</a></li>
+<li><a href="eventemployee.do">Empoyee assign for events </a></li>
+</ul>
 </body>
 </html>

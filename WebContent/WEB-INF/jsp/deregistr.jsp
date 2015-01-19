@@ -20,21 +20,23 @@ fuction submission(){
 </head>
 <body>
 <center>
+<h1>De-Registration page</h1>
 <form:form name="deregistrationForm" action="deregistr.do" commandName="deregistrCommand" method="POST" onsubmit="submission()">
 <c:if test="${deregistrCommand.deregistrStatus == false}">
 	<h2><font color="red">There is no employee </font></h2>
 	<h2><font color="red">check Employee Id and Emloyee name </font></h2>
 </c:if>	
-<br>
-<br>
+
+<table>
 <tr>
-<td>Employee Id </td>
-<td><form:input path="Empid" name="empid" maxlength="5"  placeholder="empid" /></td>
+<td><h3>Employee Id </h3></td>
+<td><form:input path="Empid" name="empid" maxlength="5"   /></td>
 </tr><br><br>
 <tr>
-<td>User Name </td>
-<td><form:input path="userName" name="username" maxlength="20"   placeholder="username"/></td>
+<td><h3>User Name </h3></td>
+<td><form:input path="userName" name="username" maxlength="20"/></td>
 </tr>
+</table>
 <br>
 <br><br>
 <input type="submit" name="submit" value="DeRegister"/>
