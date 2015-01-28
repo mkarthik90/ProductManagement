@@ -8,18 +8,49 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Event creation</title>
-<script type="text/javascript" language="javascript">
-  </script>
-
+<SCRIPT LANGUAGE="JavaScript">
+            <!--
+            function checker()
+            {
+               
+              var noprod = document.eventcreationform.nopreq
+              //  var result2 = document.form1.text1.value.match(regExp2)
+              //  if (result1 == null && result2 == null) {
+            	  if (document.eventcreationform.Eventname.value == ""){
+            		  alert("Please enter the 'Event name'")
+                      document.eventcreationform.Eventname.focus()
+                      return false
+            	  }
+                
+              else if (noprod.value == "") {
+                    alert("Please enter the 'No.of products required'")
+                    noprod.focus()
+                    return false
+                } 
+              else if (isNaN(noprod.value)) {
+                  alert("Please enter 'No.of products required' in number")
+                  noprod.focus()
+                  return false
+              }
+              else {
+                    document.eventcreationform.submit()
+                }
+            }
+            
+        </SCRIPT>
 </head>
 <body>
 <center>
 <h1>Event creation</h1>
-<form:form name="eventcreationform" action="create.do" commandName="eventcreateCommand" method="POST">
-<c:if test="${eventcreateCommand.eventStatus == false}">
+<form:form name="eventcreationform" action="create.do" commandName="eventcreateCommand" method="POST" ONSUBMIT="return checker()">
+<c:choose>
+
+<c:when test="${eventcreateCommand.eventStatus == false}">
 	<h3><font color="blue">Duplication occurs</font></h3>
 	<h4><font color="red">There is an record for the same details</font></h4>
-</c:if>	
+</c:when>
+
+</c:choose>
 <table>
 <tr>
 <td><h3>Employee ID </h3></td>

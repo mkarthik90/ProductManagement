@@ -8,20 +8,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>De-registration</title>
-<script type="text/javascript">
-fuction submission(){
-	empid=document.forms[0].Empid.value;
-	if(empid=="")
-		{
-		alert("enter the empid");
-		}
-}
-</script>
+<SCRIPT LANGUAGE="JavaScript">
+            <!--
+            function checker()
+            {
+               
+              var empid = document.deregistrationForm.Empid
+              var employee = document.deregistrationForm.userName
+              
+            	  if (empid.value == ""){
+            		  alert("Please enter the 'Empid'")
+                      empid.focus()
+                      return false
+            	  }
+                
+              else if (employee.value == "") {
+                    alert("Please enter the 'User name'")
+                    employee.focus()
+                    return false
+                } 
+              else if (isNaN(empid.value)) {
+                  alert("Please enter 'Empid' in number")
+                  empid.focus()
+                  return false
+              }
+              else {
+                    document.deregistrationForm.submit()
+                }
+            }
+            
+        </SCRIPT>
 </head>
 <body>
 <center>
 <h1>De-Registration page</h1>
-<form:form name="deregistrationForm" action="deregistr.do" commandName="deregistrCommand" method="POST" onsubmit="submission()">
+<form:form name="deregistrationForm" action="deregistr.do" commandName="deregistrCommand" method="POST" ONSUBMIT="return checker()" >
 <c:if test="${deregistrCommand.deregistrStatus == false}">
 	<h2><font color="red">There is no employee </font></h2>
 	<h2><font color="red">check Employee Id and Emloyee name </font></h2>
@@ -30,16 +51,16 @@ fuction submission(){
 <table>
 <tr>
 <td><h3>Employee Id </h3></td>
-<td><form:input path="Empid" name="empid" maxlength="5"   /></td>
+<td><form:input path="Empid"  maxlength="5"   /></td>
 </tr><br><br>
 <tr>
 <td><h3>User Name </h3></td>
-<td><form:input path="userName" name="username" maxlength="20"/></td>
+<td><form:input path="userName"  maxlength="20"/></td>
 </tr>
 </table>
 <br>
 <br><br>
-<input type="submit" name="submit" value="DeRegister"/>
+<input type="submit" value="DeRegister"/>
 </form:form>
 </center>
 </body>

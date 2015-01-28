@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="registration.do">Register Employee</a>
-<a href="deregistration.do">De-Register Employee</a>
+<center>
+<ul>
+<li><a href="registration.do">Register Employee</a></li>
+<li><a href="deregistration.do">De-Register Employee</a></li>
+</ul>
+</center>
 </body>
 </html>

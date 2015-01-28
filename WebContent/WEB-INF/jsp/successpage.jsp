@@ -7,7 +7,9 @@
 <title>Deregistration:sucess</title>
 </head>
 <body>
+<center>
 <h1>The employee is removed from the list</h1>
-<a href="deapplication.do"> de-registration page</a>
+<a href="deregistration.do"> de-registration page</a>
+</center>
 </body>
 </html>

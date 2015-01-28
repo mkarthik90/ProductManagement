@@ -7,8 +7,10 @@
 <title>Deregistrationnotpossible</title>
 </head>
 <body>
+<center>
 <h1>de-registration is not possible</h1>
-<h2>the employee has some product to submit</h2>
-<a href="deapplication.do"> for de-registration page</a>
+<h2><font color="red">the employee has some product to submit</font></h2>
+<a href="deregistration.do"> for de-registration page</a>
+</center>
 </body>
 </html>
