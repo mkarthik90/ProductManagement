@@ -3,6 +3,15 @@ package com.wity.command;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class EventcreateCommand {
+	private String Hour;
+	private String Minutes;
+	
+	private String mic;
+	private String speaker;
+	private String led;
+	private String projector;
+	
+	private String ampm;
 	private String Empid;
 	private String Eventname;
 	private int nopreq;
@@ -11,12 +20,85 @@ public class EventcreateCommand {
 	private String year;
 	@DateTimeFormat(pattern="yyyy.MM.dd")
 	private String nDate;
+	private String ntime;
+	private boolean eventmenStatus = false;
 	private boolean eventStatus = true;
+	private String place;
 	//private date ndate;
+	
 	
 	
 	public boolean isEventStatus() {
 		return eventStatus;
+	}
+	public String getMic() {
+		System.out.println("mic"+mic);
+		return mic;
+	}
+	//@Override
+	//public String toString() {
+		//return "EventcreateCommand [mic=" + mic + ", speaker=" + speaker
+		//		+ ", led=" + led + ", projector=" + projector + "]";
+	//	return projector;
+	//}
+	public void setMic(String mic) {
+		this.mic = mic;
+	}
+	public String getSpeaker() {
+		return speaker;
+	}
+	public void setSpeaker(String speaker) {
+		this.speaker = speaker;
+	}
+	public String getLed() {
+		return led;
+	}
+	public void setLed(String led) {
+		this.led = led;
+	}
+	public String getProjector() {
+		return projector;
+	}
+	public void setProjector(String projector) {
+		this.projector = projector;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public String getNtime() {
+		ntime=Hour + ":" + Minutes+":00 "+ampm;
+		return ntime;
+	}
+	public void setNtime(String ntime) {
+		this.ntime = ntime;
+	}
+	public String getHour() {
+		return Hour;
+	}
+	public void setHour(String hour) {
+		Hour = hour;
+	}
+	public String getMinutes() {
+		return Minutes;
+	}
+	public void setMinutes(String minutes) {
+		Minutes = minutes;
+	}
+	public String getAmpm() {
+		return ampm;
+	}
+	public void setAmpm(String ampm) {
+		this.ampm = ampm;
+	}
+	public boolean isEventmenStatus() {
+		return eventmenStatus;
+	}
+	public void setEventmenStatus(boolean eventmenStatus) {
+		
+		this.eventmenStatus = false;
 	}
 	public String getEmpid() {
 		
@@ -68,12 +150,11 @@ public class EventcreateCommand {
 	public void setnDate(String nDate) {
 		this.nDate = nDate;
 	}
-	@Override
-	public String toString() {
-		return Empid ;
+	//@Override
+	//public String toString() {
+	//	return Empid ;
 		
 	}
 	
 	
 
-}

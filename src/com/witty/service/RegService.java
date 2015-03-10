@@ -58,9 +58,19 @@ private JdbcTemplate jdbcTemplate;
 
 
 @Override
-public void addEmployee( String Username, String Email,
+public int addEmployee( String Username, String Email,
 		String FirstName, String LastName, String Password) {
-	employeeRegistrationDAO.addEmployee(Username, Email, FirstName, LastName, Password);
+	int empid;
+	empid=employeeRegistrationDAO.addEmployee(Username,Email, FirstName, LastName, Password);
+	employeeRegistrationDAO.addEmpdetails(FirstName,empid);
+        return empid;
 	
+}
+public boolean checkemployeeDetails(String Username,String Email){
+	if(employeeRegistrationDAO.getemployeeDetails(Username, Email)==0)
+	{
+		return true;
+	}
+	return false;
 }
 }

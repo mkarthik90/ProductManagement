@@ -7,16 +7,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
+<link rel="stylesheet" href="normalize.css">
+<script type="text/javascript" src="js/jquery-valid-lightbox-v1.1.js"></script>
+    <link href="css/jquery-valid-lightbox-v1_1.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-<h2>Login Page</h2>
 <form:form name="loginForm" action="login.do" commandName="loginCommand" method="POST">
+<h1>Login</h1>
 <c:if test="${loginCommand.loginStatus == false}">
 	<h2><font color="red">Please Login Again!! </font></h2>
 </c:if>	
-<h3>UserName</h3><form:input path="userName"/><br/>
-<h3>Password</h3><form:password path="password"/><br/>
+<label for="username">User Name:</label>
+<form:input path="userName"/><br/>
+<label for="password">Password:</label>
+<form:password path="password"/><br/>
 <input type="submit" value="Login"/>
 </form:form>
 </body>

@@ -1,0 +1,11 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #c2bead;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	line-height: 1.5em; 
+	background-image: url(bgs.jpg);
+	background-repeat: repeat-y;
+	background-position: left;
+}

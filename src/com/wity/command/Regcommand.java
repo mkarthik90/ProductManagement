@@ -15,9 +15,17 @@ public class Regcommand {
 	String Password;
 	@NotNull
 	String Username;
+	private boolean eventStatus = true;
 	
-	
-	
+	public boolean getEventStatus() {
+		return eventStatus;
+	}
+	public boolean isEventStatus() {
+		return eventStatus;
+	}
+	public void setEventStatus(boolean eventStatus) {
+		this.eventStatus = eventStatus;
+	}
 	public String getPassword() {
 		return Password;
 	}
@@ -48,6 +56,7 @@ public class Regcommand {
 	public void setEmail(String Email) {
 		this.Email = Email;
 	}
+	
 
 	
 }

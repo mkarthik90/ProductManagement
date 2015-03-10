@@ -4,21 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome</title>
+<link rel="stylesheet" href="normalize.css">
 </head>
 <body>
-	<h2>
+<%
+
+//session.setAttribute("userid",userid );
+%>
+	<h1>
 		<center>Logged in Successfully</center>
-	</h2>
-	<h3>
-		<center>
-			<ul style="list-style-type: none">
-				<li><a href="registrationPage.do">Employee Management</a></li>
-				<li><a href="">Product Management</a></li>
-				<li><a href="eventpage.do">Event Management</a></li>
+	</h1>
+	<div>
+		
+			
+				<a href="registrationPage.do"><input type="submit" value="Employee Management"/></a>
+				<a href=""><input type="submit" value="Product Management"/></a>
+				<a href="eventpage.do"><input type="submit" value="Event Management"/></a>
 				
-			</ul>
-		</center>
-	</h3>
+				
+			
+	</div>	
+	
 </body>
 </html>

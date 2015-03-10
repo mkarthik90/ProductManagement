@@ -1,6 +1,12 @@
 package com.witty.service;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.wity.command.EventCommand;
 public interface IEventService {
-	public void showEvent(String Eventname,String Employee,String Products);
+	
+
+public EventCommand mapRow(ResultSet rs, int rowNum) throws SQLException;
+
 
 }

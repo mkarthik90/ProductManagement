@@ -4,10 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Event success</title>
+<link rel="stylesheet" href="normalize.css">
+
 </head>
-<body>
+<body><center>
 <h1>Event is created successfully</h1>
-<a href="eventcreation.do"> Event creation page</a>
+<div>
+<table><tr>
+<td><label for="eventname"><h3>Event name</h3></label></td>
+<td>${EventName}</td>
+</tr><br>
+<tr>
+<td><label for="date"><h3>Date</h3></label></td>
+<td>${ndate}</td></tr><br>
+<tr><td><label for="place"><h3>Place</h3></label></td>
+<td>${place}</td>
+</tr><br>
+<td><label for="noprodreq"><h3>No of products required</h3></label></td>
+<td>${nopreq}</td>
+</tr><br>
+</table>
+<a href="eventcreation.do"><input type="submit" value="Event creation page"/></a>
+
+</div>
+</center>
 </body>
 </html>

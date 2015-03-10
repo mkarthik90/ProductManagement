@@ -7,61 +7,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>De-registration</title>
-<SCRIPT LANGUAGE="JavaScript">
-            <!--
-            function checker()
-            {
-               
-              var empid = document.deregistrationForm.Empid
-              var employee = document.deregistrationForm.userName
-              
-            	  if (empid.value == ""){
-            		  alert("Please enter the 'Empid'")
-                      empid.focus()
-                      return false
-            	  }
-                
-              else if (employee.value == "") {
-                    alert("Please enter the 'User name'")
-                    employee.focus()
-                    return false
-                } 
-              else if (isNaN(empid.value)) {
-                  alert("Please enter 'Empid' in number")
-                  empid.focus()
-                  return false
-              }
-              else {
-                    document.deregistrationForm.submit()
-                }
-            }
-            
-        </SCRIPT>
+<link rel="stylesheet" href="normalize.css">
+
 </head>
 <body>
+<div>
 <center>
 <h1>De-Registration page</h1>
-<form:form name="deregistrationForm" action="deregistr.do" commandName="deregistrCommand" method="POST" ONSUBMIT="return checker()" >
-<c:if test="${deregistrCommand.deregistrStatus == false}">
-	<h2><font color="red">There is no employee </font></h2>
-	<h2><font color="red">check Employee Id and Emloyee name </font></h2>
-</c:if>	
+<form:form name="deregistrationForm" action="confirmation.do" commandName="deregistrCommand" method="POST">
 
-<table>
+
+
+<h3><font color="blue">Select the Employee to deregister</font></h3>
+<table id="customers" >
 <tr>
-<td><h3>Employee Id </h3></td>
-<td><form:input path="Empid"  maxlength="5"   /></td>
-</tr><br><br>
-<tr>
-<td><h3>User Name </h3></td>
-<td><form:input path="userName"  maxlength="20"/></td>
+<td><label for="Select"><h3>Select</h3></label></td>
+<td><label for="Empid"><h3>Employee Id</h3></label></td>
+<td><label for="Empname"><h3>Employee Name</h3></label></td>
 </tr>
+<c:forEach var="user" items="${emplist}">
+                <tr>
+                    <td><INPUT TYPE="radio" path="Empid" NAME="Empid" VALUE="${user.empid}" ></td>
+                    <td><c:out value="${user.empid}" /></td>
+                    <td><c:out value="${user.userName}" /></td>
+                                        
+                </tr>
+            </c:forEach>
+
+
 </table>
-<br>
-<br><br>
+
+
+
+             
+            <BR>
 <input type="submit" value="DeRegister"/>
 </form:form>
+<form:form name="deregistrationForm4" action="registrationPage.do">
+<input type="submit" value="Back"/>
+</form:form>
 </center>
+</div>
 </body>
 </html>

@@ -14,17 +14,17 @@ public class DeregistrService implements IDeregistrService {
 	@Autowired
 	@Qualifier("deregistrDAO")
 	public IDeregistrDAO deregistrDAO;
-	//int remiprod;
+	int remiprod;
+	String username1;
 
-	public boolean checkregistrDetails(String Empid,String userName){
-		if(deregistrDAO.getDeregistrDetails(Empid, userName)==0){
-			return false;
-		}
-		return true;
-	}
-	public boolean checkprodDetails(String Empid,String userName)
-	{   int remiprod;
+	public int getproddetails(String Empid)
+	{
 		remiprod=deregistrDAO.getremprodDetails(Empid);
+		return remiprod;
+	}
+	public boolean checkprodDetails(String Empid)
+	{   //int remiprod;
+		//remiprod=deregistrDAO.getremprodDetails(Empid);
 		if(remiprod==0)
 		{
 			deregistrDAO.deletemp(Empid);
@@ -33,7 +33,21 @@ public class DeregistrService implements IDeregistrService {
 		return false;
 		
 	}
-	
+	public String getusernameDetails(String Empid)
+	{
+		try
+	{
+		username1=deregistrDAO.getusernamDetails(Empid);
+		//System.out.println("answer is"+username1);
+		
+		return username1;
+	}
+		catch(Exception e)
+		{
+			 System.out.println(e);
+		}
+		return username1;
+	}
 	
 }
 

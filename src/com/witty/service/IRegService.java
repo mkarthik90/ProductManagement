@@ -4,6 +4,7 @@ import com.wity.command.Regcommand;
 
 
 public interface IRegService {
-	
-	public void addEmployee(String Username,String Email,String FirstName,String LastName,String Password);
+	public boolean checkemployeeDetails(String Username,String Email);
+	public int addEmployee(String Username,String Email,String FirstName,String LastName,String Password);
+	//public int gettheempid();
 }

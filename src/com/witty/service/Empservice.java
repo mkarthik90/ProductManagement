@@ -26,7 +26,10 @@ public class Empservice implements RowMapper<EventcreateCommand>
 	@Override
 	 public EventcreateCommand mapRow(ResultSet rs, int rowNum) throws SQLException {
 		EventcreateCommand eventcreatecommand=new EventcreateCommand();
-		eventcreatecommand.setEmpid(rs.getString("empid"));
+		eventcreatecommand.setMic(rs.getString("mic"));
+		eventcreatecommand.setSpeaker(rs.getString("speaker"));
+		eventcreatecommand.setProjector(rs.getString("projector"));
+		eventcreatecommand.setLed(rs.getString("led"));
 		
 		System.out.println("aa");
 		return eventcreatecommand;

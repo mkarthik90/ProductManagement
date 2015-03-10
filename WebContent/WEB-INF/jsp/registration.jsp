@@ -7,139 +7,199 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+              <title>Registration Page</title>
         
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-        <title>Registration Page</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-       
-        <link rel="shortcut icon" href="../favicon.ico"> 
-       <!--  <link rel="stylesheet" type="text/css" href="style.css" /> -->
-        <link rel="stylesheet" type="text/css" href="css/style2.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+ <script type="text/javascript" language="javascript">
+function getXMLHttpRequest(){
+      var xmlHttpReq = false;
+      // to create XMLHttpRequest object in non-Microsoft browsers
+      if (window.XMLHttpRequest) {
+        xmlHttpReq = new XMLHttpRequest();
+      } 
+      else if (window.ActiveXObject) {
+        try {
+          // to create XMLHttpRequest object in later versions
+          // of Internet Explorer
+          xmlHttpReq = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (exp1) {
+          try {
+            // to create XMLHttpRequest object in older versions
+            // of Internet Explorer
+            xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+          } catch (exp2) {
+            xmlHttpReq = false;
+          }
+        }
+      }
+      return xmlHttpReq;
+    };
+    function usernameValidation(str)
+    {
+        if (str.length==0) 
+        { 
+            document.getElementById("Emailprocess").innerHTML="should not be empty";
+            return false;
+        }
+        else if(str.length<=4)
+        {
+                document.getElementById("Emailprocess").innerHTML="need more than 4 charachers";
+                return false;
+        }
+        else{
+                var xmlHttpRequest = getXMLHttpRequest();
+                xmlHttpRequest.onreadystatechange =function()
+                {
+                    if (xmlHttpRequest.readyState < 4 && xmlHttpRequest.readyState > 0)
+                    {
+                        document.getElementById("Emailprocess").innerHTML = "<img src='images/load.gif' alt='checking...' width=16 height=16/>";
+                    }
+                    if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200)
+                    {
+                    	//alert(1);
+                    	//alert(xmlHttpRequest.responseText);
+                    	//String res=xmlHttpRequest.responseText;
+                    	//res=res.trim();
+                        if(xmlHttpRequest.responseText==1)
+                        {
+                            document.getElementById("Emailprocess").innerHTML = "<img src='images/ok.jpg' alt='username available' width=16 height=16/>";
+                            document.getElementById("Emailprocess1").innerHTML ="." ;
+                            
+                           // document.getElementById('employee').value=val;
+                        }
+                        else
+                        {
+                            document.getElementById("Emailprocess").innerHTML = "username not available";
+                            document.getElementById("Email").value="";
+                        }
+                    }
+                };
+                xmlHttpRequest.open("GET", "check.jsp?email="+str, true);
+                xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                xmlHttpRequest.send();
 
-<!-- <script type="text/javascript">
-function validate()
-{
-var Username = document.getElementById("Username");
-var Password = document.getElementById("Password");
-var Email=document.getElementById("Email");
-var FirstName=document.getElementById("FirstName");
-var LastName=document.getElementById("LastName");
-var EmpId=document.getElementById("EmpId");
-var valid=true;
-if(USername.value.length<=0 || Password.value.length<=0 || Email.value.length<=0 || FirstName.value.length<=0 || LastName.value.length<=0 || EmpId.value.length<=0)
-	{
-	alert("Don't leave the field Empty");
-	valid = false;
-	}
-return valid;
+            };
+    };
+
+function userSubmitValidation(){
+    var msg = document.getElementById("Emailprocess1").innerHTML;  
+    if(msg=='.'){
+        return true;
+    }
+    else{
+        return false;
+    }
 };
+
 </script>
+        
+      
+        
 
-<script type="text/javascript">
 
-$(document).ready(function() {  // <-- enclose your code in a DOM ready handler
 
-    $("#savelogin").validate({
-        rules: {
-            "Username": { 
-                required: true,
-                minlength: 6,
-                maxlength: 40
-            },
-            "Password": {
-                required: true,  
-                minlength: 6,
-                maxlength: 40
+
+
+    <SCRIPT LANGUAGE="JavaScript">
+           
+            function checker()
+            {
+               
+              var username = document.Registrationform.Username
+              var firstname = document.Registrationform.FirstName
+              var lastname = document.Registrationform.LastName
+              var email = document.Registrationform.Email
+              var password = document.Registrationform.Password
+              //  var result2 = document.form1.text1.value.match(regExp2)
+              //  if (result1 == null && result2 == null) {
+            	  if (document.Registrationform.Username.value.trim() == ""){
+            		  alert("Please enter the 'Username'")
+                      Username.focus()
+                      return false
+            	  }
+                
+              else if (firstname.value.trim() == "") {
+                    alert("Please enter the 'Firstname'")
+                    firstname.focus()
+                    return false
+                } 
+              else if (lastname.value.trim() == "") {
+                  alert("Please enter the 'Lastname'")
+                  lastname.focus()
+                  return false
+              } 
+              else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) ) {
+                  alert("Please enter the 'Email correctly' Eg.test@test.com")
+                  email.focus()
+                  return false
+              } 
+              else if (password.value.trim() == "") {
+                  alert("Please enter the 'Password'")
+                  password.focus()
+                  return false
+              } 
+              /* else if ()
+            	  {
+            	  
+            	  alert("Please check the 'Email'")
+            	  email.focus()
+            	  return false
+            	  } */
+              else {
+                    document.Registrationform.submit()
+                }
             }
-        },
-        messages: {
-            "Username": {
-                required: "username is required!",
-                minlength: "username must be at least 6 characters long"
-            },
-            "Password": {
-                required: "Please enter a password",
-                minlength: "Password must be at least 6 characters long"
-            }
-        }
-        /*, // submitHandler is not needed for this case
-        submitHandler: function (form) {
-            form.submit();  // <-- this is the default
-        }
-        */
-    });
-
-});
-</script> -->
-
-<link rel="stylesheet" type="text/css" href="style.css">
-    <style type="text/css">
-        #errorContainer {
-            display: none;
-            overflow: auto;
-            background-color: #FFDDDD;
-            border: 1px solid #FF2323;
-            padding-top: 0;
-        }
-        #errorContainer label {
-            float: none;
-            width: auto;
-        }
-        input.error {
-            border: 1px solid #FF2323;
-        }
-    </style>
+            
+        </SCRIPT>
+            <link rel="stylesheet" href="normalize.css">    
 </head>
 <body>
+<div>
+<center>
+
+
+
+
+<form:form name="Registrationform" action="registrationsuccess.do" commandName="regcommand" method="POST" ONSUBMIT="return checker()" >
 <h1>Registration Page</h1>
+<table>
 
-<div id="errorContainer">
-   <p>Please correct the following errors and try again:</p>
-    
-</div>
+<c:choose>
 
+<c:when test="${regcommand.eventStatus == false}">
+	<h3><font color="blue">Duplication occurs</font></h3>
+	<h4><font color="red">There is an record for the same details</font></h4>
+</c:when>
 
-<form:form name="Registrationform" action="registrationsuccess.do" commandName="regcommand" method="POST" >
-
+</c:choose>
 <table>
 <tr>
-<td><h3>Username</h3></td><td><form:input path="Username" id="Username" action="true"/><br/></td></tr>
-<tr><td><h3>Firstname</h3></td><td><form:input path="FirstName" id="FirstName" action="true"/><br/></td></tr>
-<tr><td><h3>Lastname</h3></td><td><form:input path="LastName" id="LastName"/><br/></td></tr>
-<tr><td><h3>Email</h3></td><td><form:input path="Email" id="Email"/><br/></td></tr>
+<td><label for="username">User Name:</label></td>
+<td><form:input path="Username" id="Username" action="true"/><br/></td></tr>
 
-<tr><td><h3>Password</h3></td><td><form:password path="Password" id="Password"/><br/></td></tr>
+<tr><td><label for="firstname">First Name:</label></td>
+<td><form:input path="FirstName" id="FirstName" action="true"/><br/></td></tr>
 
-<tr><td></td><td><input type="submit" value="Register"/></td></tr>
+<tr><td><label for="lastname">Last Name:</label></td>
+<td><form:input path="LastName" id="LastName"/><br/></td></tr>
+
+<tr><td><label for="email">Email:</label></td>
+<td><form:input path="Email" id="Email" onChange="usernameValidation(this.value)"/><br/></td><td> <div id="Emailprocess"><div id="Emailprocess1" > </div> </div> </td></tr>
+
+<tr><td><label for="password">Password:</label></td>
+<td><form:password path="Password" id="Password"/><br/></td></tr>
+
+
 </table>
+<input type="submit" value="Register"/>
 
 </form:form>
 
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $('#Registrationform').validate({
-            rules: {
-                FirstName: "required",
-                LastName: "required",
-                Username: "required",
-                Email: "required",
-                Password: "required",
-            },
-            messages: {
-                FirstName: "Please enter your first name.",
-                LastName: "Please enter your last name.",
-                Username: "Please enter the user name",
-                Email: "Please enter the email",
-                Password: "please enter the password",
-            },
-            errorContainer: $('#errorContainer'),
-            errorLabelContainer: $('#errorContainer ul'),
-            wrapper: 'li'
-        });
-    });
-</script>
+<form:form name="registrationformback" action="registrationPage.do">
+<input type="submit" value="Back"/>
+</form:form>
+</center>
+</div>
 </body>
 </html>
