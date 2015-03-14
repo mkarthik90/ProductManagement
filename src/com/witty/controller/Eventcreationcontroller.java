@@ -9,6 +9,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -60,6 +65,29 @@ public class Eventcreationcontroller {
 		return new ModelAndView("eventcreationz",referenceData);
 		//return new ModelAndView("eventcreationz");
 	}
+
+	@RequestMapping(value="/list.do" ,method = RequestMethod.POST)
+	 public @ResponseBody
+	 EventcreateCommand  add(EventcreateCommand eventcreatecommand,HttpServletRequest request, HttpServletResponse response)
+	 //String processlist(@RequestParam(value = "mic") String mic,  
+	//	   @RequestParam(value = "speaker") String speaker,  
+	//	   @RequestParam(value = "projector") String projector,  
+	//	   @RequestParam(value = "led") String led) 
+{
+
+	// 
+	  String mic = request.getParameter("mic");
+	  String projector = request.getParameter("projector");
+	  String led = request.getParameter("led");
+	  System.out.println("test service"+mic+projector+led);
+
+	//  eventcreatecommand.setEmail(email);
+	 // eventcreatecommand.setFirstName(firstName);
+	//  eventcreatecommand.setLastName(lastName);
+
+	  return eventcreatecommand;
+	 }
+
 	
 	@RequestMapping(value="/create.do" ,method=RequestMethod.POST)
 	public ModelAndView eventprocess(@ModelAttribute("eventcreateCommand")EventcreateCommand eventcreateCommand ,ModelMap model){
@@ -71,6 +99,8 @@ public class Eventcreationcontroller {
 		System.out.println("projector is"+projector);
 		String led=eventcreateCommand.getLed();
 		System.out.println("led is"+led);
+		String products=eventcreateCommand.getProducts();
+		System.out.println("gotit ahs"+products);
 		
 		String EventName = eventcreateCommand.getEventname();
 		int nopreq = eventcreateCommand.getNopreq();
@@ -82,7 +112,7 @@ public class Eventcreationcontroller {
 		
 		//String Empid=eventcreateCommand.getEmpid();
 		String viewName = "eventcreation";
-		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq,ntime,place)){
+		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq,ntime,place,products)){
 			//eventcreateCommand.setEventStatus(true);
 			String dates=eventcreateService.getdatetime();
 			model.addAttribute("EventName", EventName);

@@ -14,22 +14,22 @@ import com.wity.command.EventcreateCommand;
 @Repository("eventcreateDAO")
 public class EventcreateDAO implements IEventcreateDAO {
 
-	public int geteventDetails(String Eventname,String ndate,int nopreq,String place){
+	public int geteventDetails(String Eventname,String ndate,String time,int nopreq,String place){
 		
 		DataSource dataSource = DataFactory.getDataSource();
-		String sql = "SELECT COUNT(*) from dbo.eventdetails where eventname=? AND datetime=? AND nopreq=? AND place=? ";
+		String sql = "SELECT COUNT(*) from dbo.eventdetails where eventname=? AND date=? AND Time=? AND nopreq=? AND place=? ";
 		JdbcTemplate template = new JdbcTemplate(dataSource);
-		int count = template.queryForInt(sql, new Object[]{Eventname,ndate,nopreq,place});
+		int count = template.queryForInt(sql, new Object[]{Eventname,ndate,time,nopreq,place});
 		System.out.println("the new date455 is"+ndate);
 		System.out.println(count);
 		return count;
 	}
-	public void seteventDetails(String Eventname,String ndate,int nopreq,String place){
+	public void seteventDetails(String Eventname,String ndate,String time,int nopreq,String place,String products){
 		DataSource dataSource2 = DataFactory.getDataSource();
 		System.out.println("the new date45 is"+ndate);
-		String sql1="insert into dbo.eventdetails (eventname,datetime,nopreq,place) values (?, ?, ?, ?)";
+		String sql1="insert into dbo.eventdetails (eventname,date,Time,nopreq,place,products) values (?, ?, ?, ?, ?, ?)";
 		JdbcTemplate template2 = new JdbcTemplate(dataSource2);
-		template2.update(sql1,new Object[]{Eventname,ndate,nopreq,place});
+		template2.update(sql1,new Object[]{Eventname,ndate,time,nopreq,place,products});
 		}
 	
 	/*the below is for later use

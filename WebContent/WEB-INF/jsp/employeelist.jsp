@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Employee Search</title>
+<link rel="stylesheet" href="normalize.css">
 <script>
 function showUser(str) {
 	//alert(1);

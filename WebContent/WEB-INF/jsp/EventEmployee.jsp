@@ -152,6 +152,33 @@ xmlHttp.send(null);
  }   
  }   
  </script>
+ <script language="javascript" type="text/javascript">  
+ var xmlHttp  
+
+ function dropvalue(str){ 
+	 alert(str);
+ alert(1)
+if (typeof XMLHttpRequest != "undefined")
+{
+   xmlHttp= new XMLHttpRequest();
+       }
+       else if (window.ActiveXObject){
+   xmlHttp= new ActiveXObject("Microsoft.XMLHTTP");
+       }
+if (xmlHttp==null){
+    alert ("Browser does not support XMLHTTP Request")
+return
+} 
+var url="get.jsp";
+url += "?count=" +str;
+String rr=document.getElementById("Products").value;
+alert(rr + "asasa");
+//xmlHttp.onreadystatechange = stateChange;
+//xmlHttp.open("GET", url, true);
+//xmlHttp.send(null);
+}
+ 
+ </script>
 </head>
 <body>
 <div>
@@ -186,10 +213,10 @@ xmlHttp.send(null);
 			<tr>
 				<td><label for="selprod">Select the products:</label></td>
 				<td><form:select path="Products" multiple="multiple"
-						id="products">
+						id="products" >
 
 						<form:options items="${employeeList1}" itemValue="Products"
-							itemLabel="Products" />
+							itemLabel="Products" id="Products" />
 					</form:select><br /></td>
 			</tr>
 			<tr>

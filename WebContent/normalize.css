@@ -8,8 +8,15 @@ body {
   font-family: 'Nunito', sans-serif;
   color: #384047;
   background-image: url(images/musicbg.jpg);
+  background-size: cover;
+  background-position:absolute;
+  background- top:0px;
+  background- left:0px;
+  background- width:100%;
+  background- max-height:100%;
+  background- border:0;
    
-   background-position:-200px 0;
+   
   
    
  }
@@ -151,13 +158,15 @@ label.light {
     max-width: 480px;
   }
   ul.makeMenu, ul.makeMenu ul {
-  width: 100px;                 /* sets the size of the menu blocks */
-  border: 1px solid #000;      /* puts a black border around the menu blocks */
+  width: 100px;  
+  border: transparent;               /* sets the size of the menu blocks */
+ /* border: 1px solid #000;       puts a black border around the menu blocks */
       /* makes the menu blocks mint green - a bg-color MUST be included for IE to work properly! */
   padding-left: 0px;           /* stops the usual indent from ul */
   cursor: default;             /* gives an arrow cursor */
   margin-left: 0px;            /* Opera 7 final's margin and margin-box model cause problems */
 }
+
 ul.makeMenu li {
   list-style-type: none;       /* removes the bullet points */
   margin: 0px;                 /* Opera 7 puts large spacings between li elements */

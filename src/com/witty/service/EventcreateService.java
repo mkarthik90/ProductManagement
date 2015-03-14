@@ -18,27 +18,27 @@ public class EventcreateService implements IEventcreateService {
 	@Autowired
 	@Qualifier("eventcreateDAO")
 	public IEventcreateDAO eventcreateDAO;
-	String datetime=null;
-	public boolean checkeventDetails(String Eventname, String ndate,int nopreq,String ntime,String place)
+	String time=null;
+	public boolean checkeventDetails(String Eventname, String ndate,int nopreq,String ntime,String place,String products)
 	{       
 		String date=ndate+" "+ntime;
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss aa");
-		DateFormat df2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("hh:mm:ss aa");
+		DateFormat df2 = new SimpleDateFormat("HH:mm:ss");
 		
 		Date d=null;
     	try {
     		
-    		d= df.parse(date);
-    		datetime = df2.format(d);
-    		System.out.println("upd"+datetime);
+    		d= df.parse(ntime);
+    		time = df2.format(d);
+    		System.out.println("upd"+time);
     		
     	//String d=ndate;
 	
 	
-		if(eventcreateDAO.geteventDetails(Eventname,datetime,nopreq,place)==0)
+		if(eventcreateDAO.geteventDetails(Eventname,ndate,time,nopreq,place)==0)
 		{
 			
-		eventcreateDAO.seteventDetails(Eventname,datetime,nopreq,place);
+		eventcreateDAO.seteventDetails(Eventname,ndate,time,nopreq,place,products);
 		return true;
 	}}
     	//catch (ParseException e) {
@@ -57,7 +57,7 @@ public class EventcreateService implements IEventcreateService {
 	}
 	public String getdatetime()
 	{
-		return datetime;
+		return time;
 	}
 	
 }

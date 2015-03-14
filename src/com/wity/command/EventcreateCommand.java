@@ -6,10 +6,13 @@ public class EventcreateCommand {
 	private String Hour;
 	private String Minutes;
 	
+	private String products;
 	private String mic;
 	private String speaker;
 	private String led;
 	private String projector;
+	
+	
 	
 	private String ampm;
 	private String Empid;
@@ -31,16 +34,17 @@ public class EventcreateCommand {
 	public boolean isEventStatus() {
 		return eventStatus;
 	}
+	public String getProducts() {
+		return products;
+	}
+	public void setProducts(String products) {
+		this.products = products;
+	}
 	public String getMic() {
 		System.out.println("mic"+mic);
 		return mic;
 	}
-	//@Override
-	//public String toString() {
-		//return "EventcreateCommand [mic=" + mic + ", speaker=" + speaker
-		//		+ ", led=" + led + ", projector=" + projector + "]";
-	//	return projector;
-	//}
+	
 	public void setMic(String mic) {
 		this.mic = mic;
 	}
