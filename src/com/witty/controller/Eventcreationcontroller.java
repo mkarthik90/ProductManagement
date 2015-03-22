@@ -63,7 +63,7 @@ public class Eventcreationcontroller {
 		newlist.addAll((service.eventcreateDAO.getempdetails()));
 		referenceData.put("productslist",newlist);
 		return new ModelAndView("eventcreationz",referenceData);
-		//return new ModelAndView("eventcreationz");
+		//return new ModelAndView("eventcreation");
 	}
 
 	@RequestMapping(value="/list.do" ,method = RequestMethod.POST)
@@ -107,19 +107,24 @@ public class Eventcreationcontroller {
 		String ndate=eventcreateCommand.getnDate();
 		String place=eventcreateCommand.getPlace();
 		String ntime=eventcreateCommand.getNtime();
+		String rtime=eventcreateCommand.getRtime();
+		String returndate=eventcreateCommand.getReturnDate();
 		System.out.println("new time is"+ntime);
 		
 		
 		//String Empid=eventcreateCommand.getEmpid();
 		String viewName = "eventcreation";
-		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq,ntime,place,products)){
+		if(eventcreateService.checkeventDetails(EventName,ndate,nopreq,ntime,place,products,returndate,rtime)){
 			//eventcreateCommand.setEventStatus(true);
-			String dates=eventcreateService.getdatetime();
+			
 			model.addAttribute("EventName", EventName);
-			//model.addAttribute("Empid", Empid);
-			model.addAttribute("ndate", dates);
+			model.addAttribute("ndate", ndate);
+			model.addAttribute("ntime", ntime);
+			model.addAttribute("returndate", returndate);
+			model.addAttribute("rtime", rtime);
 			model.addAttribute("nopreq",nopreq);
 			model.addAttribute("place",place);
+			model.addAttribute("products",products);
 				viewName= "eventsuccess";
 			
 			}

@@ -32,12 +32,12 @@ String buffer;
 
 	 int micquantity=rs.getInt("micquantity");
 	 
-	 
+	 if(micquantity>0){
 	 System.out.println("<tr>"+"<td>"+micarr[i]+"</td>"+"<td>"+micquantity+"</td>"+"</tr>"); 
 	 %>
 	 
 	<tr><td><label for="mics"><%=micarr[i]%></label></td>
-	<td><select name="products" path="products" ><c:forEach var="j" begin="0" end="<%=micquantity%>"><option value="<%=micarr[i]%>-${j}" label="${j}" /></c:forEach></select></td>
+	<td><select name="products" path="products" ><c:forEach var="j" begin="1" end="<%=micquantity%>"><option value="<%=micarr[i]%>-${j}" label="${j}" /></c:forEach></select></td>
 
 	</tr>
 	
@@ -45,7 +45,7 @@ String buffer;
 	 <%
 	 //out.print("<tr>"+"<td>"+micarr[i]+"</td>"+"<td>"+"<select>"+"<c:forEach var=\"j\" begin=\"0\" end=\"5\">"+"<option value=\"${j}\" label=\"${j}\" />"+"</c:forEach>"+"</select>"+"</td>"+"</tr>");
 	 //out.print("<tr>"+"<td>"+empid+"</td>"+"<td>"+firstname+"</td>"+"<td>"+lastname+"</td>"+"<td>"+username+"</td>"+"<td>"+email+"</td>"+"</tr>"); 
-	 } 
+	 }} 
 	   
 	 
 	      

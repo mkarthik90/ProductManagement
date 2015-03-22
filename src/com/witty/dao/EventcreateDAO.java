@@ -24,13 +24,27 @@ public class EventcreateDAO implements IEventcreateDAO {
 		System.out.println(count);
 		return count;
 	}
-	public void seteventDetails(String Eventname,String ndate,String time,int nopreq,String place,String products){
+	public void seteventDetails(String Eventname,String ndate,String time,String returndate,String returntime,int nopreq,String place,String products){
+		
 		DataSource dataSource2 = DataFactory.getDataSource();
 		System.out.println("the new date45 is"+ndate);
-		String sql1="insert into dbo.eventdetails (eventname,date,Time,nopreq,place,products) values (?, ?, ?, ?, ?, ?)";
+		String sql1="insert into dbo.eventdetails (eventname,date,Time,returnDate,returnTime,nopreq,place,products) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	//	String sql2="SELECT COUNT(*) FROM   information_schema.columns WHERE  table_schema = productdetails AND column_name IN  `"+ndate+"`  ";
+	//	String sql3="ALTER TABLE productdetails ADD `"+ndate+"` int NOT NULL";
+		String sql3="select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = eventdetails AND COLUMN_NAME like 'plac%'";
 		JdbcTemplate template2 = new JdbcTemplate(dataSource2);
-		template2.update(sql1,new Object[]{Eventname,ndate,time,nopreq,place,products});
-		}
+	    JdbcTemplate template3 = new JdbcTemplate(dataSource2);
+	//	JdbcTemplate template4 = new JdbcTemplate(dataSource2);
+		template2.update(sql1,new Object[]{Eventname,ndate,time,returndate,returntime,nopreq,place,products});
+		
+		//int counts=template3.queryForInt(sql2);
+		//System.out.println("query updated successfully3456");
+		//if(counts==0){
+		//	template4.update(sql3);
+		//	System.out.println("query updated successfully");
+			
+		//}
+	}
 	
 	/*the below is for later use
 	 * modification to the below one ll use at list of products 

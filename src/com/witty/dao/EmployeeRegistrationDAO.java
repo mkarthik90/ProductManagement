@@ -11,9 +11,9 @@ public class EmployeeRegistrationDAO implements  IEmployeeRegistrationDAO{
 	public int getemployeeDetails(String Username,String Email)
 	{
 		DataSource dataSource2 = DataFactory.getDataSource();
-		String sql3 = "SELECT COUNT(*) from dbo.empde where username=? AND email=? ";
+		String sql3 = "SELECT COUNT(*) from dbo.empde where username=?";
 		JdbcTemplate template4 = new JdbcTemplate(dataSource2);
-		int count = template4.queryForInt(sql3, new Object[]{Username,Email});
+		int count = template4.queryForInt(sql3, new Object[]{Username});
 		System.out.println(count);
 		return count;
 	}

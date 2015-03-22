@@ -159,8 +159,7 @@ $( "#datepicker" ).datepicker();
 </head>
 <body>
 <div>
-<table>
-<tr><td>
+
 <form:form name="employeesearch" action=""
 		commandName="eventCommand" method="POST" ONSUBMIT="return checker()">
 
@@ -185,8 +184,7 @@ $( "#datepicker" ).datepicker();
 
 
 </table>
-</td>
-<td>
+<br>
 <table border="1" align="center" >
 <thead>
 <tr>
@@ -205,8 +203,7 @@ $( "#datepicker" ).datepicker();
 <form:form name="employeeback" action="registrationPage.do">
 <input type="submit" value="Back"/>
 </form:form>
-</td></tr>
-</table>
+
 </div>
 </body>
 </html>

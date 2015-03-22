@@ -62,7 +62,7 @@ public class EventManagementDAO implements IEventManagementDAO{
 		DataSource dataSource = DataFactory.getDataSource();
 		JdbcTemplate template = new JdbcTemplate(dataSource);
 		System.out.println("connected to roduct database");
-		String sql = new String("SELECT eventname from events ") ;
+		String sql = new String("SELECT eventname from eventdetails ") ;
 		System.out.println("Executing query product list");
 		List<EventCommand> pname = (List<EventCommand>) template.query(sql, new EventServiceEvent());
 		System.out.println("Executing List");

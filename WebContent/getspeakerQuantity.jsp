@@ -27,17 +27,19 @@ String buffer;
 	 	   //System.out.println("after query");
 
 	 int speakerquantity=rs.getInt("speakerquantity");
-	 
+	 if(speakerquantity>0)
+	 {
 	 
 	 System.out.println("<tr>"+"<td>"+speakerarr[i]+"</td>"+"<td>"+speakerquantity+"</td>"+"</tr>");%>
 	 <tr><td><label for="mics"><%=speakerarr[i]%></label></td>
-	<td><select name="products" path="products" ><c:forEach var="j" begin="0" end="<%=speakerquantity %>"><option value="<%=speakerarr[i]%>-${j}" label="${j}" /></c:forEach></select></td>
+	<td><select name="products" path="products" ><c:forEach var="j" begin="1" end="<%=speakerquantity %>"><option value="<%=speakerarr[i]%>-${j}" label="${j}" /></c:forEach></select></td>
 
 	</tr>
 	 <%
 	 //out.print("<tr>"+"<td>"+micarr[i]+"</td>"+"<td>"+"<select>"+"<c:forEach var=\"j\" begin=\"0\" end=\"5\">"+"<option value=\"${j}\" label=\"${j}\" />"+"</c:forEach>"+"</select>"+"</td>"+"</tr>");
 	 //out.print("<tr>"+"<td>"+empid+"</td>"+"<td>"+firstname+"</td>"+"<td>"+lastname+"</td>"+"<td>"+username+"</td>"+"<td>"+email+"</td>"+"</tr>"); 
-	 } 
+		 } 
+ 	 }
 	   
 	 
 	      

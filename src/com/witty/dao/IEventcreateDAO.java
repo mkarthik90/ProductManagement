@@ -8,6 +8,6 @@ import com.wity.command.EventcreateCommand;
 public interface IEventcreateDAO {
 
 	public int geteventDetails(String Eventname,String ndate,String time,int nopreq,String place);
-	public void seteventDetails(String Eventname,String ndate,String time,int nopreq,String place,String products);
+	public void seteventDetails(String Eventname,String ndate,String time,String returndate,String returntime,int nopreq,String place,String products);
 	public List<EventcreateCommand> getempdetails();
 }

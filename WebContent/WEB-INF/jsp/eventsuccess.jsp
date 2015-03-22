@@ -19,11 +19,23 @@
 <tr>
 <td><label for="date"><h3>Date</h3></label></td>
 <td>${ndate}</td></tr><br>
+<td><label for="time"><h3>Time</h3></label></td>
+<td>${ntime}</td>
+</tr><br>
+<td><label for="returndate"><h3>Return Date</h3></label></td>
+<td>${returndate}</td>
+</tr><br>
+<td><label for="rtime"><h3>Return Time</h3></label></td>
+<td>${rtime}</td>
+</tr><br>
 <tr><td><label for="place"><h3>Place</h3></label></td>
 <td>${place}</td>
 </tr><br>
 <td><label for="noprodreq"><h3>No of products required</h3></label></td>
 <td>${nopreq}</td>
+</tr><br>
+<td><label for="Products"><h3>Products</h3></label></td>
+<td>${products}</td>
 </tr><br>
 </table>
 <a href="eventcreation.do"><input type="submit" value="Event creation page"/></a>

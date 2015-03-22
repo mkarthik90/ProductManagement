@@ -11,17 +11,17 @@ public class EventcreateCommand {
 	private String speaker;
 	private String led;
 	private String projector;
-	
-	
+	private String returnDate;
+	private String Rampm;
+	private String RHour;
+	private String RMinutes;
+	private String Rtime;
 	
 	private String ampm;
 	private String Empid;
 	private String Eventname;
 	private int nopreq;
-	private String day;
-	private String month;
-	private String year;
-	@DateTimeFormat(pattern="yyyy.MM.dd")
+	
 	private String nDate;
 	private String ntime;
 	private boolean eventmenStatus = false;
@@ -34,6 +34,48 @@ public class EventcreateCommand {
 	public boolean isEventStatus() {
 		return eventStatus;
 	}
+	
+	public String getRtime() {
+		Rtime=RHour + ":" + RMinutes+":00 "+Rampm;
+		return Rtime;
+	}
+
+	public void setRtime(String rtime) {
+		Rtime = rtime;
+	}
+
+	public String getRampm() {
+		return Rampm;
+	}
+
+	public void setRampm(String rampm) {
+		Rampm = rampm;
+	}
+
+	public String getRHour() {
+		return RHour;
+	}
+
+	public void setRHour(String rHour) {
+		RHour = rHour;
+	}
+
+	public String getRMinutes() {
+		return RMinutes;
+	}
+
+	public void setRMinutes(String rMinutes) {
+		RMinutes = rMinutes;
+	}
+
+	public String getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
+	}
+
 	public String getProducts() {
 		return products;
 	}
@@ -111,24 +153,7 @@ public class EventcreateCommand {
 	public void setEmpid(String empid) {
 		Empid = empid;
 	}
-	public String getDay() {
-		return day;
-	}
-	public void setDay(String day) {
-		this.day = day;
-	}
-	public String getMonth() {
-		return month;
-	}
-	public void setMonth(String month) {
-		this.month = month;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
+	
 	public boolean getEventStatus() {
 		return eventStatus;
 	}
@@ -148,15 +173,12 @@ public class EventcreateCommand {
 		this.nopreq = nopreq;
 	}
 	public String getnDate() {
-		nDate=year + "/" + month+"/"+day;
 		return nDate;
 	}
 	public void setnDate(String nDate) {
 		this.nDate = nDate;
 	}
-	//@Override
-	//public String toString() {
-	//	return Empid ;
+	
 		
 	}
 	

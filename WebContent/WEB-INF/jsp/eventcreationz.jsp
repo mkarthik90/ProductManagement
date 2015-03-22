@@ -19,6 +19,11 @@
 	type="text/css">
 <script type="text/javascript" src="js/bootstrap-multiselect1.js"></script>
 <link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" type="text/css" href="css/datepicker.css" /> 
+<script type="text/javascript" src="js/datepicker.js"></script>
+<script type="text/javascript" src="js/timepicker.js"></script>
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 $('#demo').multiselect();
@@ -44,7 +49,58 @@ $('#demo').multiselect();
         $('#products3').multiselect();
     });
 </script>
+<script>
 
+var istoday;
+var valdate;
+function validation() {
+	//var InvForm = document.forms.eventcreationform;
+    var date = document.eventcreationform.nDate.value;
+   	istoday="true";
+    alert(date);
+    var request; 
+    
+	var url="getDateverification.jsp?count="+date;  
+	
+		if(window.XMLHttpRequest){  
+		request=new XMLHttpRequest(); 
+		
+		}  
+		else if(window.ActiveXObject){  
+		request=new ActiveXObject("Microsoft.XMLHTTP");
+		
+		}  
+		  
+		try{  
+			
+		request.onreadystatechange=function(){
+    		if(request.readyState==4){  
+    		valdate=request.responseText;
+    		//alert(request.responseText);
+    		alert("response"+valdate.trim());
+    		validate();
+    		document.getElementById('datevalues').innerHTML=valdate;
+    		
+    		}
+		}
+		request.open("GET",url,true);  
+		request.send();  
+		}catch(e){
+			alert("Unable to connect to server");
+		}  
+}
+     fuction validate(str){
+		// var eventname=document.eventcreationform.Eventname.value;       
+		 alert("testing");
+         if (eventname.trim() == ""){
+   		  alert("Please enter the 'Event name'");
+             document.eventcreationform.Eventname.focus();
+             return false;
+   	  }
+             	
+		}
+		
+</script>
 <script>
 function showmicList() {
 	
@@ -59,7 +115,7 @@ function showmicList() {
             micVal = InvForm.mic[x].value + "," + micVal ;
            }
         }
-        alert(micVal);
+       // alert(micVal);
         
         	
 	var request; 
@@ -91,8 +147,7 @@ function showmicList() {
     			alert("Unable to connect to server");
     		}  
 		}
-</script>
-<script>
+
 function showprojectorList() {
 	var InvForm = document.forms.eventcreationform;
     var projectorVal = "";
@@ -106,7 +161,7 @@ function showprojectorList() {
             projectorVal = InvForm.projector[x].value + "," + projectorVal ;
            }
         }
-        alert("proj"+projectorVal);
+        //alert("proj"+projectorVal);
         
 	
 	var request; 
@@ -138,8 +193,7 @@ function showprojectorList() {
     			alert("Unable to connect to server");
     		}  
 		}
-</script>
-<script>
+
 function showledList() {
 	var InvForm = document.forms.eventcreationform;
     var ledVal = "";
@@ -152,7 +206,7 @@ function showledList() {
             ledVal = InvForm.led[x].value + "," + ledVal ;
            }
         }
-        alert("led"+ledVal);
+       // alert("led"+ledVal);
 	
 	
 	var request; 
@@ -184,9 +238,7 @@ function showledList() {
     			alert("Unable to connect to server");
     		}  
 		}
-</script>
 
-<script>
 function showspeakerList(str) {
 	var InvForm = document.forms.eventcreationform;
     var speakerVal = "";
@@ -199,7 +251,7 @@ function showspeakerList(str) {
         	   speakerVal = InvForm.speaker[x].value + "," + speakerVal ;
            }
         }
-        alert("speaker"+speakerVal);
+        //alert("speaker"+speakerVal);
 	
 	
 	var request; 
@@ -231,15 +283,72 @@ function showspeakerList(str) {
     			alert("Unable to connect to server");
     		}  
 		}
+function showsampleList(str) {
+	alert("checking ffunction");
+	var ndate=document.eventcreationform.nDate.value.trim();
+	alert(ndate);
+	var userDate = new Date(ndate);
+	alert("user date"+userDate)
+	var currentDate = new Date();
+	alert("checking current date"+currentDate);
+	
+	var data = ndate.split("-");
+    if (isNaN(Date.parse(data[2] + "-" + data[1] + "-" + data[0]))) {
+    	alert("Enter the valid date");
+        
+    }
+    
+    
+}
+</script>
+<script>
+
+function checkValidation(str) {
+	var InvForm = document.forms.eventcreationform;
+    var eventName = document.eventcreationform.Eventname.value.trim();
+    var ndate=document.eventcreationform.nDate.value.trim();
+    var returndate=document.eventcreationform.returnDate.value.trim();
+    var Place=document.eventcreationform.place.value.trim();
+    var Products=document.eventcreationform.products.value.trim();
+    var noprod = document.eventcreationform.noProd.value;
+   
+    alert("checking ...");
+    
+    if (eventName == ""){
+		  alert("Please enter the 'Event name'");
+		  return false;
+       
+	  }
+    else if (ndate == "")
+    	{
+    	alert("Please enter the 'Event Date'");
+    	}
+    var data = ndate.split("-");
+    
+    else if (isNaN(Date.parse(data[2] + "-" + data[1] + "-" + data[0]))) {
+    	alert("Please choose the date from the Date picker");
+        //return false;
+    }
+    
+    
+	else {
+        document.eventcreationform.submit();
+   	 }
+    		
+	
+	 
+}
+		
+
 </script>
 
 
-<SCRIPT LANGUAGE="JavaScript">
+<SCRIPT language="javascript">
            
-            function checker()
+            function Checker()
             {
             	
-              var noprod = document.eventcreationform.nopreq
+              var noprod = document.eventcreationform.nopreq.value
               var place=document.evetncreationform.place
               //  var result2 = document.form1.text1.value.match(regExp2)
               //  if (result1 == null && result2 == null) {
@@ -274,6 +383,9 @@ function showspeakerList(str) {
            }
             
         </SCRIPT>
+
+
+
             
 </head>
 <body>
@@ -281,49 +393,26 @@ function showspeakerList(str) {
 <center>
 		
 
-<form:form name="eventcreationform" action="create.do" commandName="eventcreateCommand" method="POST" ONSUBMIT="return checker()">
+<form:form name="eventcreationform" action="create.do" commandName="eventcreateCommand" method="POST" onsubmit="return checkValidation()">
 <h1>Event creation</h1>
 <c:choose>
 
 <c:when test="${eventcreateCommand.eventStatus == false}">
 	<h3><font color="blue">Duplication occurs</font></h3>
-	<h4><font color="red">There is an record for the same details</font></h4>
+	<h4><font color="red">Try Again</font></h4>
 </c:when>
 
 </c:choose>
 <table>
 <tr>
 <td><label for="eventname">Event Name :</label></td>
-<td><form:input path="Eventname" maxlength="30" /></td>
-</tr><br>
-<fieldset>
+<td><form:input path="Eventname" maxlength="30" /></td></tr><br>
 <tr><td><label for="eventdate">Event Date :</label></td><td>
-<form:select path="month" >
-
-<form:option value="01" label="Jan" />
-<form:option value="02" label="Feb" />
-<form:option value="03" label="Mar" />
-<form:option value="04" label="Apr" />
-<form:option value="05" label="May" />
-<form:option value="06" label="Jun" />
-<form:option value="07" label="Jul" />
-<form:option value="08" label="Aug" />
-<form:option value="09" label="Sep" />
-<form:option value="10" label="Oct" />
-<form:option value="11" label="Nov" />
-<form:option value="12" label="Dec" />
-</form:select>
-<form:select path="day">
-<c:forEach var="j" begin="01" end="31"><form:option value="${j}" label="${j}" /></c:forEach>
-</form:select>
-<form:select path="year">
-<c:forEach var="j" begin="2005" end="2020"><form:option value="${j}" label="${j}" /></c:forEach>
-
-</form:select>  
+ <form:input path="nDate" id="start_dt" class="datepicker"  maxlength="30" onchange="valiDate1(datep)"/>
 </td>
 </tr>
-</fieldset>
-<tr><td><label for="eventtime">Event Time :</label></td><td>
+<tr><td><label for="eventtime">Event Time :</label></td>
+<td>
 <form:select path="Hour">
 <c:forEach var="j" begin="01" end="12"><form:option value="${j}" label="${j}" /></c:forEach>
 </form:select>
@@ -337,9 +426,27 @@ function showspeakerList(str) {
  
 </td>
 </tr>
+<tr><td><label for="returndate">Return Date :</label></td><td>
+ <form:input path="returnDate" id="end_dt" class="datepicker"  maxlength="30" onchange="valiDate1(datep)"/>
+</td>
+</tr>
+<tr><td><label for="returntime">Return Time :</label></td><td>
+<form:select path="RHour">
+<c:forEach var="j" begin="01" end="12"><form:option value="${j}" label="${j}" /></c:forEach>
+</form:select>
+<form:select path="RMinutes">
+<c:forEach var="j" begin="00" end="60"><form:option value="${j}" label="${j}" /></c:forEach>
+</form:select>
+<form:select path="Rampm">
+<form:option value="AM" label="AM"/>
+<form:option value="PM" label="PM"/>
+</form:select>
+ 
+</td>
+</tr>
 <tr>
 <td><label for="place">Location:</label></td>
-<td><form:input path="place" maxlength="30" /></td>
+<td><form:input path="place" maxlength="30"/></td>
 </tr><br>
 <tr>
 <td><label for="nofprodreq">Number of products required:</label></td>
@@ -397,6 +504,8 @@ function showspeakerList(str) {
 </ul>
 <br><br></td></tr><tr><td></td><td>
 <input type="button" value="Add" onClick="showmicList();showspeakerList();showprojectorList();showledList()"/></td>
+<td>
+<input type="button" value="check" onClick="showsampleList();"/></td>
 </tr>
 <tr>
 <td><label for="Quantity">Select the Quantity:</label></td><td></td><td></td></tr>
@@ -419,13 +528,11 @@ function showspeakerList(str) {
 </table>
 
 
-
 <input type="submit" value="Create"/>
 </form:form>					
 <form:form name="eventcreationback" action="eventpage.do">
 <input type="submit" value="Back"/>
 </form:form>
-<select name="products" path="products" form="eventcreationform"><c:forEach var="j" begin="0" end="5"><option value="${j}" label="${j}" /></c:forEach></select>		
 
 </center>
 </div>

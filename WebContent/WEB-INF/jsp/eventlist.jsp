@@ -297,8 +297,10 @@ function showeventbydatetoday(str) {
 </script>
 </head>
 <body>
+
 <form:form name="eventsearch" action=""
 		commandName="eventCommand" method="POST" ONSUBMIT="return checker()">
+		<div>
 
 <h1>Event Search</h1>
 <table>
@@ -348,6 +350,8 @@ function showeventbydatetoday(str) {
 
 </tbody>
 </table>
+</div>
 </form:form>
+
 </body>
 </html>
